@@ -12,11 +12,11 @@ Each project demonstrates practical skills in networking, system configuration, 
 - Created a responsive website with HTML, CSS, and JavaScript.
 - Tools: Virtual Studio
 
-### 2. Linux Network Services Configuration
+### 2. Linux Network Services Configuration (Group Project)
 - Configured and deployed Linux-based web, DHCP, and DNS servers, and a wireless access point.
 - Tools: Ubuntu Server, Apache, KEA, BIND9, hostapd.
 
-### 3. Ethical Hacking (OWASP Juice Shop)
+### 3. Ethical Hacking (OWASP Juice Shop) (Group Project)
 - Conducted ethical hacking steps on OWASP Juice Shop in a controlled environment.
 - Tools: OWASP ZAP, SkipFish, Nmap.
 
